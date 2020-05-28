@@ -51,6 +51,7 @@ FOUNDATION_EXPORT const unsigned char AppAuthVersionString[];
 #import <AppAuth/OIDEndSessionRequest.h>
 #import <AppAuth/OIDEndSessionResponse.h>
 
+/*
 #if TARGET_OS_TV
 #elif TARGET_OS_WATCH
 #elif TARGET_OS_IOS || TARGET_OS_MACCATALYST
@@ -67,4 +68,4 @@ FOUNDATION_EXPORT const unsigned char AppAuthVersionString[];
 #else
 #error "Platform Undefined"
 #endif
-
+*/
