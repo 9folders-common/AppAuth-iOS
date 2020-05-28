@@ -62,7 +62,7 @@
   [invocation invoke];
   void *ret = nil;
   [invocation getReturnValue:&ret];
-  NSLog(@"invoke return : %p", ret);
+
   return (BOOL)ret;
 }
 
