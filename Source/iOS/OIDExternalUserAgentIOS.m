@@ -24,6 +24,7 @@
 #import "OIDErrorUtilities.h"
 #import "OIDExternalUserAgentSession.h"
 #import "OIDExternalUserAgentRequest.h"
+#import "OIDAppUtilitiesIOS.h"
 
 #if !TARGET_OS_MACCATALYST
 
@@ -161,7 +162,11 @@ NS_ASSUME_NONNULL_BEGIN
   }
   // iOS 8 and earlier, use mobile Safari
   if (!openedUserAgent){
-    openedUserAgent = [[UIApplication sharedApplication] openURL:requestURL];
+    UIApplication *app = nil;
+    if ([OIDAppUtilitiesIOS isAppExtension]) {
+      app = [NSClassFromString(@"UIApplication") sharedApplication];
+    }
+    openedUserAgent = [app performSelector:@selector(openURL:) withObject:requestURL] != nil;
   }
 
   if (!openedUserAgent) {

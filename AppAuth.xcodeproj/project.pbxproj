@@ -464,6 +464,7 @@
 		60140F801DE4344200DA0DC3 /* OIDRegistrationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 60140F7F1DE4344200DA0DC3 /* OIDRegistrationResponse.m */; };
 		60140F831DE43BAF00DA0DC3 /* OIDRegistrationRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60140F821DE43BAF00DA0DC3 /* OIDRegistrationRequestTests.m */; };
 		60140F861DE43CC700DA0DC3 /* OIDRegistrationResponseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60140F851DE43CC700DA0DC3 /* OIDRegistrationResponseTests.m */; };
+		610BC99A247FD7940022B4B4 /* OIDAppUtilitiesIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 610BC999247FD7940022B4B4 /* OIDAppUtilitiesIOS.m */; };
 		A5EEF29720D821120044F470 /* OIDTokenUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EEF1FD20CF07760044F470 /* OIDTokenUtilitiesTests.m */; };
 		A5EEF29820D8211A0044F470 /* OIDTokenUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EEF1FD20CF07760044F470 /* OIDTokenUtilitiesTests.m */; };
 		A5EEF29920D8211B0044F470 /* OIDTokenUtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EEF1FD20CF07760044F470 /* OIDTokenUtilitiesTests.m */; };
@@ -716,6 +717,8 @@
 		60140F821DE43BAF00DA0DC3 /* OIDRegistrationRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDRegistrationRequestTests.m; sourceTree = "<group>"; };
 		60140F841DE43C8C00DA0DC3 /* OIDRegistrationResponseTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OIDRegistrationResponseTests.h; sourceTree = "<group>"; };
 		60140F851DE43CC700DA0DC3 /* OIDRegistrationResponseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDRegistrationResponseTests.m; sourceTree = "<group>"; };
+		610BC998247FD7940022B4B4 /* OIDAppUtilitiesIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OIDAppUtilitiesIOS.h; path = iOS/OIDAppUtilitiesIOS.h; sourceTree = "<group>"; };
+		610BC999247FD7940022B4B4 /* OIDAppUtilitiesIOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OIDAppUtilitiesIOS.m; path = iOS/OIDAppUtilitiesIOS.m; sourceTree = "<group>"; };
 		A5EEF1FD20CF07760044F470 /* OIDTokenUtilitiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OIDTokenUtilitiesTests.m; sourceTree = "<group>"; };
 		A6CEB1172007E384009D492A /* OIDEndSessionRequestTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIDEndSessionRequestTests.h; sourceTree = "<group>"; };
 		A6CEB1182007E384009D492A /* OIDEndSessionRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDEndSessionRequestTests.m; sourceTree = "<group>"; };
@@ -1070,6 +1073,8 @@
 				A6DEABA82018E5B50022AC32 /* OIDExternalUserAgentIOS.m */,
 				F9A7082C2355ED74004B3E6D /* OIDExternalUserAgentCatalyst.h */,
 				F9A7082D2355ED74004B3E6D /* OIDExternalUserAgentCatalyst.m */,
+				610BC998247FD7940022B4B4 /* OIDAppUtilitiesIOS.h */,
+				610BC999247FD7940022B4B4 /* OIDAppUtilitiesIOS.m */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -1783,6 +1788,7 @@
 				341741E01C5D8243000EF209 /* OIDErrorUtilities.m in Sources */,
 				34A6632D1E871DD40060B664 /* OIDIDToken.m in Sources */,
 				CF6431F41F228A980075B6B5 /* OIDEndSessionResponse.m in Sources */,
+				610BC99A247FD7940022B4B4 /* OIDAppUtilitiesIOS.m in Sources */,
 				341741EA1C5D8243000EF209 /* OIDTokenUtilities.m in Sources */,
 				341741E21C5D8243000EF209 /* OIDGrantTypes.m in Sources */,
 				60140F7C1DE42E1000DA0DC3 /* OIDRegistrationRequest.m in Sources */,

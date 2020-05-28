@@ -24,6 +24,7 @@
 #import "OIDAuthorizationService.h"
 #import "OIDErrorUtilities.h"
 #import "OIDURLQueryComponent.h"
+#import "OIDAppUtilitiesIOS.h"
 
 #if !TARGET_OS_MACCATALYST
 
@@ -129,29 +130,41 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)presentExternalUserAgentRequest:(nonnull id<OIDExternalUserAgentRequest>)request
                                 session:(nonnull id<OIDExternalUserAgentSession>)session {
   // If the app store URL is set, checks if the app is installed and if not opens the app store.
+  UIApplication *app = nil;
   if (_appStoreURL && _canOpenURLScheme) {
     // Verifies existence of LSApplicationQueriesSchemes Info.plist key.
     NSArray __unused* canOpenURLs =
-        [[NSBundle mainBundle] objectForInfoDictionaryKey:@"LSApplicationQueriesSchemes"];
+    [[NSBundle mainBundle] objectForInfoDictionaryKey:@"LSApplicationQueriesSchemes"];
     NSAssert(canOpenURLs, @"plist missing LSApplicationQueriesSchemes key");
     NSAssert1([canOpenURLs containsObject:_canOpenURLScheme],
               @"plist missing LSApplicationQueriesSchemes entry for '%@'", _canOpenURLScheme);
-
+    
+    
     // Opens AppStore if app isn't installed
     NSString *testURLString = [NSString stringWithFormat:@"%@://example.com", _canOpenURLScheme];
     NSURL *testURL = [NSURL URLWithString:testURLString];
-    if (![[UIApplication sharedApplication] canOpenURL:testURL]) {
-      [[UIApplication sharedApplication] openURL:_appStoreURL];
+    if ([OIDAppUtilitiesIOS isAppExtension]) {
+      app = [NSClassFromString(@"UIApplication") sharedApplication];
+    }
+    if (![app canOpenURL:testURL]) {
+      [app performSelector:@selector(openURL:) withObject:_appStoreURL];
       return NO;
     }
+    return NO;
   }
   
   // Transforms the request URL and opens it.
   NSURL *requestURL = [request externalUserAgentRequestURL];
   requestURL = _URLTransformation(requestURL);
-  BOOL openedInBrowser = [[UIApplication sharedApplication] openURL:requestURL];
+  BOOL openedInBrowser = NO;
+  if (app) {
+    openedInBrowser = [app performSelector:@selector(openURL:) withObject:_appStoreURL] != nil;
+  }
+  
   return openedInBrowser;
 }
+
+
 
 - (void)dismissExternalUserAgentAnimated:(BOOL)animated
                                 completion:(nonnull void (^)(void))completion {
