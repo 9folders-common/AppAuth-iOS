@@ -21,11 +21,17 @@
 #import "OIDAuthorizationResponseTests.h"
 #import "OIDRegistrationResponseTests.h"
 #import "OIDTokenResponseTests.h"
-#import "Source/OIDAuthState.h"
-#import "Source/OIDAuthorizationResponse.h"
-#import "Source/OIDErrorUtilities.h"
-#import "Source/OIDRegistrationResponse.h"
-#import "Source/OIDTokenResponse.h"
+
+#if SWIFT_PACKAGE
+@import AppAuthCore;
+#else
+#import "Source/AppAuthCore/OIDAuthState.h"
+#import "Source/AppAuthCore/OIDAuthorizationResponse.h"
+#import "Source/AppAuthCore/OIDErrorUtilities.h"
+#import "Source/AppAuthCore/OIDRegistrationResponse.h"
+#import "Source/AppAuthCore/OIDTokenResponse.h"
+#endif
+
 #import "OIDTokenRequestTests.h"
 
 // Ignore warnings about "Use of GNU statement expression extension" which is raised by our use of
@@ -427,6 +433,27 @@
       [[OIDAuthState alloc] initWithAuthorizationResponse:authorizationResponse
                                             tokenResponse:tokenResponse];
   XCTAssertEqual([authState isTokenFresh], YES, @"");
+}
+
+- (void)testThatRefreshTokenExceptionWillBeRaisedForTokenRequestWithAdditionalParameters {
+  OIDAuthState *authState = [[OIDAuthState alloc] initWithAuthorizationResponse:nil tokenResponse:nil registrationResponse:nil];
+  XCTAssertThrowsSpecificNamed([authState tokenRefreshRequestWithAdditionalParameters:nil],
+                               NSException,
+                               kRefreshTokenRequestException);
+}
+
+- (void)testThatRefreshTokenExceptionWillBeRaisedForTokenRequestWithAdditionalHeaders {
+  OIDAuthState *authState = [[OIDAuthState alloc] initWithAuthorizationResponse:nil tokenResponse:nil registrationResponse:nil];
+  XCTAssertThrowsSpecificNamed([authState tokenRefreshRequestWithAdditionalHeaders:nil],
+                               NSException,
+                               kRefreshTokenRequestException);
+}
+
+- (void)testThatRefreshTokenExceptionWillBeRaisedForTokenRequestWithAdditionalParametersAndHeaders {
+  OIDAuthState *authState = [[OIDAuthState alloc] initWithAuthorizationResponse:nil tokenResponse:nil registrationResponse:nil];
+  XCTAssertThrowsSpecificNamed([authState tokenRefreshRequestWithAdditionalHeaders:nil],
+                               NSException,
+                               kRefreshTokenRequestException);
 }
 
 @end
