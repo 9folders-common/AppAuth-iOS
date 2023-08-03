@@ -160,6 +160,17 @@ NS_ASSUME_NONNULL_BEGIN
        additionalHeaders:(nullable NSDictionary<NSString *, NSString *> *)additionalHeaders
     NS_DESIGNATED_INITIALIZER;
 
+- (instancetype)initWithConfiguration:(OIDServiceConfiguration *)configuration
+               grantType:(NSString *)grantType
+       authorizationCode:(nullable NSString *)code
+             redirectURL:(nullable NSURL *)redirectURL
+                clientID:(NSString *)clientID
+            clientSecret:(nullable NSString *)clientSecret
+                   scope:(nullable NSString *)scope
+            refreshToken:(nullable NSString *)refreshToken
+            codeVerifier:(nullable NSString *)codeVerifier
+    additionalParameters:(nullable NSDictionary<NSString *, NSString *> *)additionalParameters;
+
 /*! @brief Designated initializer for NSSecureCoding.
     @param aDecoder Unarchiver object to decode
  */

@@ -153,6 +153,29 @@ static NSString *const kAdditionalHeadersKey = @"additionalHeaders";
   return self;
 }
 
+- (instancetype)initWithConfiguration:(OIDServiceConfiguration *)configuration
+               grantType:(NSString *)grantType
+       authorizationCode:(nullable NSString *)code
+             redirectURL:(nullable NSURL *)redirectURL
+                clientID:(NSString *)clientID
+            clientSecret:(nullable NSString *)clientSecret
+                   scope:(nullable NSString *)scope
+            refreshToken:(nullable NSString *)refreshToken
+            codeVerifier:(nullable NSString *)codeVerifier
+    additionalParameters:(nullable NSDictionary<NSString *, NSString *> *)additionalParameters {
+  return [self initWithConfiguration:configuration
+                           grantType:grantType
+                   authorizationCode:code
+                         redirectURL:redirectURL
+                            clientID:clientID
+                        clientSecret:clientSecret
+                               scope:scope
+                        refreshToken:refreshToken
+                        codeVerifier:codeVerifier
+                additionalParameters:additionalParameters
+                   additionalHeaders:nil];
+}
+
 #pragma mark - NSCopying
 
 - (instancetype)copyWithZone:(nullable NSZone *)zone {
